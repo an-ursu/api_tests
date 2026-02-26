@@ -1,0 +1,73 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Generated schema for Root",
+  "type": "object",
+  "properties": {
+    "total": {
+      "type": "integer"
+    },
+    "used": {
+      "type": "integer"
+    },
+    "queued": {
+      "type": "integer"
+    },
+    "pending": {
+      "type": "integer"
+    },
+    "browsers": {
+      "type": "object",
+      "properties": {
+        "chrome": {
+          "type": "object",
+          "properties": {
+            "127.0": {
+              "type": "object",
+              "additionalProperties": true
+            },
+            "128.0": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          },
+          "required": ["127.0", "128.0"],
+          "additionalProperties": false
+        },
+        "firefox": {
+          "type": "object",
+          "properties": {
+            "124.0": {
+              "type": "object",
+              "additionalProperties": true
+            },
+            "125.0": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          },
+          "required": ["124.0", "125.0"],
+          "additionalProperties": false
+        },
+        "opera": {
+          "type": "object",
+          "properties": {
+            "108.0": {
+              "type": "object",
+              "additionalProperties": true
+            },
+            "109.0": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          },
+          "required": ["108.0", "109.0"],
+          "additionalProperties": false
+        }
+      },
+      "required": ["chrome", "firefox", "opera"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["total", "used", "queued", "pending", "browsers"],
+  "additionalProperties": false
+}
