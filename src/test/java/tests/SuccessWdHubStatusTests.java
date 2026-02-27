@@ -6,8 +6,7 @@ import utils.AuthUtils;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
-import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.hasKey;
+import static org.hamcrest.Matchers.*;
 
 public class SuccessWdHubStatusTests extends TestBase {
 
@@ -63,6 +62,21 @@ public class SuccessWdHubStatusTests extends TestBase {
                 .body(matchesJsonSchemaInClasspath("schemas/wd_hub_status_response_schema.json"))
                 .body("value", hasKey("message"))
                 .body("value.message", containsString("Selenoid 1.11.3 built at 2024-05-25_12:34:40PM"));
+
+    }
+
+    @Test
+    public void checkReadinessTest() {
+        given()
+                .log().all()
+                .auth().basic(AuthUtils.getValidLogin(), AuthUtils.getValidPassword())
+                .when()
+                .get("/status")
+                .then()
+                .log().all()
+                .statusCode(200)
+                .body("value", hasKey("ready"))
+                .body("value.ready", is(true));
 
     }
 
